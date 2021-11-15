@@ -1,18 +1,24 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.trianguloy.collapseclosingtags</id>
-    <name>CollapseClosingTags</name>
-    <vendor>trianguloy</vendor>
+    <id>com.trianguloy.collapseclosingtags</id>
+    <name>Collapse Closing Tags</name>
+    <vendor>Trianguloy</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.trianguloy.collapseclosingtags.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.trianguloy.collapseclosingtags.services.MyProjectService"/>
+        <lang.foldingBuilder language="DTD" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
+        <lang.foldingBuilder language="XML" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
+        <lang.foldingBuilder language="HTML" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
+        <lang.foldingBuilder language="XHTML"
+                             implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.trianguloy.collapseclosingtags.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
+    <actions>
+        <action id="com.trianguloy.collapseclosingtags.CollapseAllAction"
+                class="com.trianguloy.collapseclosingtags.CollapseAllAction" text="Collapse All Closing Tags"
+                description="Collapses all closing tags in the current file">
+            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
