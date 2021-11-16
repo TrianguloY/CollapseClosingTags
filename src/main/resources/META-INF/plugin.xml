@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.trianguloy.collapseclosingtags</id>
     <name>Collapse Closing Tags</name>
-    <vendor>Trianguloy</vendor>
+    <vendor>TrianguloY</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 

@@ -2,14 +2,20 @@
 
 # CollapseClosingTags Changelog
 
-## V 0.1.0
+## [Unreleased]
+
+## [0.1.1]
+
+- Fixed issue with Marketplace upload
+
+## [0.1.0]
 
 ### Added
 
 - Colapsable closing tags
 - Action to collapse all tags in file when right click
 
-## V 0.0.1
+## [0.0.1]
 
 ### Added
 

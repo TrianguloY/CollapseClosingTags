@@ -9,11 +9,11 @@ This plugin allows collapsing ending xml tags:
 
 From:
 
-![pre](pre.png)
+![pre](https://github.com/TrianguloY/CollapseClosingTags/blob/main/pre.png?raw=true)
 
 To:
 
-![post](post.png)
+![post](https://github.com/TrianguloY/CollapseClosingTags/blob/main/post.png?raw=true)
 
 They are implemented using the IDE folding features, so you can use the collapse/expand actions and its keywords.
 
