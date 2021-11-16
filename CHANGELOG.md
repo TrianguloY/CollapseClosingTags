@@ -2,6 +2,16 @@
 
 # CollapseClosingTags Changelog
 
-## [Unreleased]
+## V 0.1.0
+
 ### Added
-- Initial scaffold created from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
+
+- Colapsable closing tags
+- Action to collapse all tags in file when right click
+
+## V 0.0.1
+
+### Added
+
+- Initial scaffold created
+  from [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template)
