@@ -4,9 +4,16 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Increased details on changelog entries
+
 ## [0.1.1]
 
-- Fixed issue with Marketplace upload
+### Fixed
+
+- Broken images in readme
+- Invalid pluginUntilBuild version
 
 ## [0.1.0]
 
