@@ -1,1 +1,8 @@
-rootProject.name = "CollapseClosingTags"
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name = "collapseclosingtags"

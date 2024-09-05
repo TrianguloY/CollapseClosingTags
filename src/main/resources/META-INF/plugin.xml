@@ -1,24 +1,30 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
     <id>com.trianguloy.collapseclosingtags</id>
-    <name>Collapse Closing Tags</name>
-    <vendor>TrianguloY</vendor>
 
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>collapseclosingtags</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    Enter short description for your plugin here.<br>
+    <em>most HTML tags may be used</em>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <lang.foldingBuilder language="DTD" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
-        <lang.foldingBuilder language="XML" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
-        <lang.foldingBuilder language="HTML" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
-        <lang.foldingBuilder language="XHTML"
-                             implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
-    </extensions>
 
-    <actions>
-        <action id="com.trianguloy.collapseclosingtags.CollapseAllAction"
-                class="com.trianguloy.collapseclosingtags.CollapseAllAction" text="Collapse All Closing Tags"
-                description="Collapses all closing tags in the current file">
-            <add-to-group group-id="EditorPopupMenu" anchor="last"/>
-        </action>
-    </actions>
+    </extensions>
 </idea-plugin>
