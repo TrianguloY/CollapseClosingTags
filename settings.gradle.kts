@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "collapseclosingtags"
+rootProject.name = "CollapseClosingTags"
