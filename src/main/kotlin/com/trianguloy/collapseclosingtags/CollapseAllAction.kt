@@ -1,5 +1,6 @@
 package com.trianguloy.collapseclosingtags
 
+import com.intellij.codeInsight.folding.impl.EditorFoldingInfo
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -19,11 +20,15 @@ class CollapseAllAction : AnAction() {
 
     override fun getActionUpdateThread() = ActionUpdateThread.BGT
 
-    /**
-     * Get all folding regions by checking if the collapsed text is '/'
-     * this is wrong, may return more regions, but wasn't able to find a better alternative
-     */
+    /** get our folding regions */
     private val AnActionEvent.foldingRegions
-        get() = getData(LangDataKeys.EDITOR)?.foldingModel?.allFoldRegions?.filter { it.placeholderText == "/" }
+        get() = getData(LangDataKeys.EDITOR)
+            ?.foldingModel
+            ?.allFoldRegions
+            ?.filter {
+                EditorFoldingInfo.get(it.editor)
+                    .getPsiElement(it)
+                    ?.getUserData(USER_DATA) == true
+            }
 }
 

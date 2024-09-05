@@ -17,11 +17,14 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-        <lang.foldingBuilder language="DTD" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
-        <lang.foldingBuilder language="XML" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
-        <lang.foldingBuilder language="HTML" implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
+        <lang.foldingBuilder language="DTD"
+                             implementationClass="com.trianguloy.collapseclosingtags.CollapseFoldingBuilder"/>
+        <lang.foldingBuilder language="XML"
+                             implementationClass="com.trianguloy.collapseclosingtags.CollapseFoldingBuilder"/>
+        <lang.foldingBuilder language="HTML"
+                             implementationClass="com.trianguloy.collapseclosingtags.CollapseFoldingBuilder"/>
         <lang.foldingBuilder language="XHTML"
-                             implementationClass="com.trianguloy.collapseclosingtags.MyFoldingBuilder"/>
+                             implementationClass="com.trianguloy.collapseclosingtags.CollapseFoldingBuilder"/>
     </extensions>
     <actions>
         <action id="com.trianguloy.collapseclosingtags.CollapseAllAction"
