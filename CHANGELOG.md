@@ -1,6 +1,14 @@
 # Collapse Closing Tags Changelog
 
-## [Unreleased]
+## [1.0.0] - 2024-09-05
+
+### Fixed
+
+- Fixed `ActionUpdateThread.OLD_EDT is deprecated and going to be removed soon`
+
+### Internal
+
+- Updated and simplified repository and tools
 
 ## [0.1.2] - 2021-11-18
 ### Fixed

@@ -1,5 +1,6 @@
 package com.trianguloy.collapseclosingtags
 
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.LangDataKeys
@@ -15,6 +16,8 @@ class CollapseAllAction : AnAction() {
         e.getData(LangDataKeys.EDITOR)?.foldingModel
             ?.runBatchFoldingOperation({ e.foldingRegions?.forEach { it.isExpanded = false } }, true, true)
     }
+
+    override fun getActionUpdateThread() = ActionUpdateThread.BGT
 
     /**
      * Get all folding regions by checking if the collapsed text is '/'
