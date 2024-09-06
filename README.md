@@ -1,6 +1,6 @@
 # Collapse Closing Tags (Jetbrains plugin)
 
-![Build](https://github.com/TrianguloY/CollapseClosingTags/workflows/Build/badge.svg)
+[![Verify plugin](https://github.com/TrianguloY/CollapseClosingTags/actions/workflows/verify.yml/badge.svg)](https://github.com/TrianguloY/CollapseClosingTags/actions/workflows/verify.yml)
 [![Version](https://img.shields.io/jetbrains/plugin/v/18020.svg)](https://plugins.jetbrains.com/plugin/18020)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/18020.svg)](https://plugins.jetbrains.com/plugin/18020)
 
