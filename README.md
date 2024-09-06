@@ -33,8 +33,5 @@ Additionally, it includes an entry in the right-click menu to collapse all detec
   Download the [latest release](https://github.com/TrianguloY/CollapseClosingTags/releases/latest) and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
-
 ---
-Plugin based on the [IntelliJ Platform Plugin Template][template].
-
-[template]: https://github.com/JetBrains/intellij-platform-plugin-template
+Plugin originally based on the [IntelliJ Platform Plugin Template](https://github.com/JetBrains/intellij-platform-plugin-template), but later removed to simplify everything.
