@@ -25,6 +25,12 @@
                              implementationClass="com.trianguloy.collapseclosingtags.CollapseFoldingBuilder"/>
         <lang.foldingBuilder language="XHTML"
                              implementationClass="com.trianguloy.collapseclosingtags.CollapseFoldingBuilder"/>
+
+        <projectConfigurable
+                parentId="tools"
+                instance="com.trianguloy.collapseclosingtags.SettingsConfigurable"
+                id="com.trianguloy.collapseclosingtags.SettingsConfigurable"
+                displayName="Collapse Closing Tags"/>
     </extensions>
     <actions>
         <action id="com.trianguloy.collapseclosingtags.CollapseAllAction"

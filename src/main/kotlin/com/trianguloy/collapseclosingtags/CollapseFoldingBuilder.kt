@@ -7,11 +7,14 @@ import com.intellij.lang.folding.FoldingDescriptor
 import com.intellij.openapi.editor.Document
 import com.intellij.openapi.util.Key
 import com.intellij.openapi.util.TextRange
+import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiElement
 import com.intellij.psi.impl.source.xml.XmlTokenImpl
 import com.intellij.psi.util.PsiTreeUtil
 import com.intellij.psi.util.elementType
+import com.intellij.psi.util.siblings
 import com.intellij.psi.xml.XmlTokenType
+import com.intellij.refactoring.suggested.endOffset
 
 val USER_DATA = Key.create<Boolean>("com.trianguloy.collapseclosingtags")
 
@@ -37,14 +40,52 @@ class CollapseFoldingBuilder : FoldingBuilderEx() {
         // and return as array
         .toList().toTypedArray()
 
-    /**
-     * All placeholder texts are '/' to display '</>'
-     */
-    override fun getPlaceholderText(node: ASTNode) = "/"
+    /** Get placeholder text */
+    override fun getPlaceholderText(node: ASTNode): String {
+        val document = node.psi
+            .run { PsiDocumentManager.getInstance(project).getDocument(containingFile) }
+            ?: return node.text
 
-    /**
-     * All collapsed by default, of course
-     */
-    override fun isCollapsedByDefault(node: ASTNode) = true
+        val startRow = node.psi.siblings(forward = false)
+            .find { it.elementType == XmlTokenType.XML_START_TAG_START }
+            ?.nextSibling
+            ?.endOffset
+            ?.let { document.getLineNumber(it) }
+            ?: return node.text
+        val endRow = node.startOffset.let { document.getLineNumber(it) }
+
+        return "/" + (node.service.getSettingsForLineSeparation(endRow - startRow).collapsedText.value.takeIf { it.isNotEmpty() }
+            ?.let { collapsedText ->
+                Regex(collapsedText)
+                    .findAll(node.text)
+                    .map { it.value }
+                    .joinToString("")
+            } ?: "")
+    }
+
+    /** Collapse by default if the difference between the start and end tags is more than the required number of lines */
+    override fun isCollapsedByDefault(node: ASTNode) = isFoldingRegionCollapsedByDefault(node)
 
 }
+
+fun isFoldingRegionCollapsedByDefault(node: ASTNode): Boolean {
+    val document = node.psi
+        .run { PsiDocumentManager.getInstance(project).getDocument(containingFile) }
+        ?: return false
+
+    val startRow = node.psi.siblings(forward = false)
+        .find { it.elementType == XmlTokenType.XML_START_TAG_START }
+        ?.nextSibling
+        ?.endOffset
+        ?.let { document.getLineNumber(it) }
+        ?: return false
+    val endRow = node.startOffset.let { document.getLineNumber(it) }
+
+    return node.service.getSettingsForLineSeparation(endRow - startRow).collapseByDefault.value
+
+}
+
+
+/** Returns the SettingsState service from a node. */
+private val ASTNode.service
+    get() = psi.project.getService(SettingsState::class.java)

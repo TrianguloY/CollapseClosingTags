@@ -13,9 +13,10 @@ class CollapseAllAction : AnAction() {
     }
 
     override fun actionPerformed(e: AnActionEvent) {
-        // collapse all tags in file
-        e.getData(LangDataKeys.EDITOR)?.foldingModel
-            ?.runBatchFoldingOperation({ e.foldingRegions?.forEach { it.isExpanded = false } }, true, true)
+        e.getData(LangDataKeys.EDITOR)?.foldingModel?.runBatchFoldingOperation({
+            // collapse all tags in file
+            e.foldingRegions?.forEach { it.isExpanded = false }
+        }, true, true)
     }
 
     override fun getActionUpdateThread() = ActionUpdateThread.BGT
@@ -28,7 +29,9 @@ class CollapseAllAction : AnAction() {
             ?.filter {
                 EditorFoldingInfo.get(it.editor)
                     .getPsiElement(it)
-                    ?.getUserData(USER_DATA) == true
+                    ?.run {
+                        getUserData(USER_DATA) == true && isFoldingRegionCollapsedByDefault(node)
+                    } ?: false
             }
 }
 
